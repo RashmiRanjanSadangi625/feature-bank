@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Index Page</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Main Style Css -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    {{>style}}
+    <style>
+    	.right-page
+    	{
+    		background: url("/background.png");
+    	}
+    </style>
+    
+</head>
+
+<body>
+	{{>navbar}}
+		<div class="main">
+			<div class="left-menu">
+				
+				<div class="left-menu-info">No. of features &nbsp;&nbsp; <span class="boldfonts" id="counter"></span></div>
+				<div class="left-menu-section" id="features">
+					<div class="category">Basic</div>
+					<div class='featurelist'><a href="/register">Sign Up</a></div>
+					<div class='featurelist'><a href="/login">Login</a></div>
+					<div class='featurelist'><a href="/uploadPage">Image Upload</a></div>
+					<div class='featurelist'><a href="/dynamicdiv">Dynamic Div Creation</a></div>
+					<div class='featurelist'><a href="/regiser">Pop Up Modal</a></div>
+					<div class="category">Advance</div>
+					<div class='featurelist'><a href="/sentEmail">Email Sending</a></div>
+					<div class='featurelist'><a href="/register">JWT</a></div>
+					<div class='featurelist'><a href="/register">Dynamic Pdf Creation & Preview</a></div>
+					<div class='featurelist'><a href="/register">Sign Up</a></div>
+					<div class="category">API</div>
+					<div class='featurelist'><a href="/register">Google Docs</a></div>
+					<div class='featurelist'><a href="/register">Google Sheet</a></div>
+					<div class='featurelist'><a href="/register">Google Drive</a></div>
+					<div class='featurelist'><a href="/register">Open Weather</a></div>
+					<div class='featurelist'><a href="/register">Dynamic Quote Generation</a></div>
+				</div>
+
+				
+
+				</script>
+				
+				<!-- <div class="left-menu-section"><span>-></span>{{features}}</div> -->
+			</div>
+			<div class="right-page">
+				<div class="hoading"><p>Welcome</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to </p><p>Node JS</p></div>
+				
+			</div>
+		</div>
+		<div class="footer">
+			<p>Feature bank by Rashmi Ranjan Copyright@2022 </p>			
+		</div>
+	</div>
+
+
+	<script>
+		const count = document.getElementsByClassName("featurelist").length;
+		// const count = featurelist.length;
+		// console.log(count);
+		document.getElementById("counter").innerHTML=count;
+
+		<!-- //fetch no.of features and create dynamically menu
+				//----------------------------------------------------->
+			
+					// const baseUrl='http://localhost:3000/fetch';
+					// const singupPageUrl='http://localhost:3000/register';
+
+					// const counter = document.getElementById("counter");
+					// const feature = document.getElementById("features");
+					// // document.getElementById('fetch').addEventListener('click',getFeatures);
+
+					// async function getFeatures(e)
+					// {
+					// 	const res = await fetch(baseUrl,{method : 'GET'})
+					// 	const data =await res.json();
+					// 	console.log(data.features[0]);	
+					// 	// console.log(res);
+					// 	counter.innerHTML=data.counter;	
+						
+					// 	//Get the list of feature menu
+					// 	for (var i = 0; i < data.counter; i++)
+					// 	{
+					// 		feature.innerHTML = feature.innerHTML+"<div class='featurelist' id='list' onclick='getPage(this)'>"+"->"+data.features[i].featurename+"</div>";
+					// 	}				
+					// }
+					
+					// getFeatures();
+					// <!----------------------End of fetching features------------------>
+
+
+					//--------------Redirect to selected page as per request---------------
+					// var featurelist = document.getElementById("list");
+					// console.log(featurelist);
+
+					// featurelist.addEventListener('click',getPage);
+				</script>
+
+
+</body>
