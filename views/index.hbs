@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Feature bank</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Main Style Css -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    {{>style}}
+    <style>
+    	.right-page
+    	{
+    		background: url("background.png");
+    	}
+    	.mlist
+    	{
+    		color: #fff;
+    	}
+    	a
+    	{
+    		text-decoration: none;
+    	}
+    	a:hover
+    	{
+    		text-decoration: none;
+    	}
+    	.mlist:hover
+    	{
+    		background-color: darkgrey;
+    		text-decoration: none;
+    	}
+    </style>
+    
+</head>
+
+<body>
+	{{>navbar}}
+		<div class="main">
+			<div class="left-menu">
+				
+				<div class="left-menu-info">No. of features &nbsp;&nbsp; <span class="boldfonts" id="counter"></span></div>
+				<div class="left-menu-section" id="features">
+					<div class="category">Basic</div>
+					<a href="/register"><div class='featurelist'><span class="mlist">Sign Up</span></div></a>
+					<a href="/login"><div class='featurelist'><span class="mlist">Login</span></div></a>
+
+					<a href="/dynamicdiv"><div class='featurelist'><span class="mlist">Dynamic Div Creation</span></div></a>
+					<a href="/fetchdata"><div class='featurelist'><span class="mlist">Fetch Data From Database</span></div></a>
+					<div class="category">Advance</div>
+					<a href="/uploadPage"><div class='featurelist'><span class="mlist">Image Upload</span></div></a>
+					<a href="/sentEmail"><div class='featurelist'><span class="mlist">Email Sending</span></div></a>
+					<a href="/register"><div class='featurelist'><span class="mlist">JWT</span></div></a>
+					<a href="/dynamicpdf"><div class='featurelist'><span class="mlist">Dynamic Pdf Creation</span></div></a>
+					<!-- <a href="/register"><div class='featurelist'><span class="mlist">Sign Up</span></div></a> -->
+
+
+					<div class="category">APIs</div>
+					<a href="/googlesheetapi"><div class='featurelist'><span class="mlist">Google Sheet</span></div></a>
+					<a href="/wordsapi"><div class='featurelist'><span class="mlist">Words API</span></div></a>
+					<a href="/weatherapi"><div class='featurelist'><span class="mlist">Open Weather</span></div></a>
+					<a href="/dynamicquote"><div class='featurelist'><span class="mlist">Dynamic Quote Generation</span></div></a>
+					<a href="/wordsapi"><div class='featurelist'><span class="mlist">Google Drive</span></div></a>
+				</div>
+
+				
+
+				</script>
+				
+				<!-- <div class="left-menu-section"><span>-></span>{{features}}</div> -->
+			</div>
+			<div class="right-page">
+				<div class="hoading"><p>&nbsp;&nbsp;&nbsp;Welcome</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to </p><p>Feature Bank</p></div>
+				
+			</div>
+		</div>
+		<div class="footer">
+			<p>Feature bank by Rashmi Ranjan Copyright@2022 </p>			
+		</div>
+	</div>
+
+
+	<script>
+		const count = document.getElementsByClassName("featurelist").length;
+		// const count = featurelist.length;
+		// console.log(count);
+		document.getElementById("counter").innerHTML=count;
+
+		 //fetch no.of features and create dynamically menu
+				//----------------------------------------------------->
+			
+					// const baseUrl='http://localhost:3000/fetch';
+					// const singupPageUrl='http://localhost:3000/register';
+
+					// const counter = document.getElementById("counter");
+					// const feature = document.getElementById("features");
+					//  document.getElementById('fetch').addEventListener('click',getFeatures);
+
+					// async function getFeatures(e)
+					// {
+					// 	const res = await fetch(baseUrl,{method : 'GET'})
+					// 	const data =await res.json();
+					// 	console.log(data.features[0]);	
+					//  console.log(res);
+					// 	counter.innerHTML=data.counter;	
+						
+					// 	//Get the list of feature menu
+					// 	for (var i = 0; i < data.counter; i++)
+					// 	{
+					// 		feature.innerHTML = feature.innerHTML+"<div class='featurelist' id='list' onclick='getPage(this)'>"+"->"+data.features[i].featurename+"</div>";
+					// 	}				
+					// }
+					
+					// getFeatures();
+					// <!----------------------End of fetching features------------------>
+
+
+					//--------------Redirect to selected page as per request---------------
+					// var featurelist = document.getElementById("list");
+					// console.log(featurelist);
+
+					// featurelist.addEventListener('click',getPage);
+				</script>
+
+
+</body>
