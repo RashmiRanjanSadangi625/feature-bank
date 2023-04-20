@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Google Spreadsheet API </title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/montserrat-font.css">
+	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<!-- Main Style Css -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    {{>style}}
+    <style>
+    	.buttons
+    	{
+    	  margin:0;
+    	  padding:5px;
+    	  display:flex;
+    	  align-items:center;
+    	  justify-content:space-evenly;
+    	  width:auto;
+    	  height:10vh;
+    	  background-color:#3A3E59;
+    	  color:#fff;
+    	}
+    	.opbuttons
+    	{
+    		padding:10px;
+    		background-color: #ED6B5B;
+    		color: #fff;
+    		border: none;
+    		border-radius: 5px;
+    		cursor: pointer;
+    		font-size: 18px;
+    	}
+    </style>
+</head>
+<body>
+	{{>navbar}} 
+	<div class="buttons">
+		<!-- <a href="/googlesheetapi/getData"> --><button type="button" class="opbuttons" onclick="getData()">Fetch Data</button><!-- </a> -->
+		<!-- <a href="/googlesheetapi/sendData"> --><button type="button" class="opbuttons" onclick="addData()">Add Data</button><!-- </a> -->
+		<!-- <a href="/googlesheetapi/updateData"> --><button type="button" class="opbuttons" onclick="updateData()">Update Data</button><!-- </a> -->
+		<!-- <a href="/googlesheetapi/delData"> --><button type="button" class="opbuttons" onclick="deleteData()">Delete Data</button><!-- </a> -->
+	</div>
+	<div class="page-content" id="getData">
+		<div class="form-v10-content">
+			<form class="form-detail"  action="/googlesheetapi/getData" method ="POST" id="myform">
+				<div class="form-right">
+					<h2 style="text-align: center;">Enter Data To Search</h2>
+					<div class="form-row">
+						<input type="text" name="searchingdata" class="street" id="noOfDivs">
+					</div>
+					<div class="form-row-last" style="display: flex;align-items: center;justify-content: center;">
+						<input type="submit" name="register" class="register" value="Fetch Data" id="create">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="page-content" id="addData">
+		<div class="form-v10-content">
+			<form class="form-detail"  action="/googlesheetapi/addData" method ="POST" id="myform">
+				<div class="form-right">
+					<h2 style="text-align: center;">Adding Data to Sheet</h2>
+					<div class="form-row">
+						<input type="text" name="email" class="street" placeholder="Enter email" >
+					</div>
+					<div class="form-row">
+						<input type="text" name="uname" class="street" placeholder="Enter username">
+					</div>
+					<div class="form-row">
+						<input type="text" name="psw" class="street" placeholder="Enter Password" >
+					</div>
+					<div class="form-row-last" style="display: flex;align-items: center;justify-content: center;">
+						<input type="submit" name="register" class="register" value="Add Data" id="create">
+						<span  id = "divs" style="display: none;">{{divs}}</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="page-content" id="updateData">
+		<div class="form-v10-content">
+			<form class="form-detail"  action="/googlesheetapi/updateData" method ="POST" id="myform">
+				<div class="form-right">
+					<h2 style="text-align: center;">Updating Data to Sheet</h2>
+					<div class="form-row">
+						<input type="text" name="keyValue" class="street" placeholder="Enter email" value="email" >
+					</div>
+					<div class="form-row">
+						<input type="text" name="oemail" class="street" placeholder="Enter Old Email">
+					</div>
+					<div class="form-row">
+						<input type="text" name="nemail" class="street" placeholder="Enter New Email" >
+					</div>
+					<div class="form-row-last" style="display: flex;align-items: center;justify-content: center;">
+						<input type="submit" name="register" class="register" value="Update" id="create">
+						<span  id = "divs" style="display: none;">{{divs}}</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="page-content" id="deleteData">
+		<div class="form-v10-content">
+			<form class="form-detail"  action="/googlesheetapi/deleteData" method ="POST" id="myform">
+				<div class="form-right">
+					<h2 style="text-align: center;">Delete Data to Sheet</h2>
+					<div class="form-row">
+						<input type="text" name="email" class="street" id="noOfDivs">
+					</div>
+					<div class="form-row-last" style="display: flex;align-items: center;justify-content: center;">
+						<input type="submit" name="register" class="register" value="Delete Data" id="create">
+						<span  id = "divs" style="display: none;">{{divs}}</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div>{{username}} {{password}}</div>
+
+	<script>
+		var gtData= document.getElementById("getData");
+		gtData.style.display="none";
+		var adData= document.getElementById("addData");
+		adData.style.display="none";
+		var upData= document.getElementById("updateData");
+		upData.style.display="none";
+		var delData= document.getElementById("deleteData");
+		delData.style.display="none";
+		function getData()
+		{
+			adData.style.display="none";
+			upData.style.display="none";
+			delData.style.display="none";
+			gtData.style.display="";
+		}
+		function addData()
+		{
+			gtData.style.display="none";
+			upData.style.display="none";
+			delData.style.display="none";
+			adData.style.display="";
+		}
+		function updateData()
+		{
+			gtData.style.display="none";
+			delData.style.display="none";
+			adData.style.display="none";
+			upData.style.display="";
+		}
+		function deleteData()
+		{
+			gtData.style.display="none";
+			upData.style.display="none";
+			adData.style.display="none";
+			delData.style.display="";
+		}
+	</script>
+</body>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Dynamic div creation </title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font--><!-- 
+	<link rel="stylesheet" type="text/css" href="css/montserrat-font.css">
+	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+ -->	<!-- Main Style Css -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    {{>style}}
+    <style>
+    	body
+    	{
+    		background-color: #3A3E59;
+    	}
+    	.content
+    	{
+  			width: 100%;
+  			height: 100%;
+  			background-color: #3A3E59;
+  			border: none;
+    	}
+    	.form-content-left
+    	{
+    		background-color: #3A3E59;
+    		float: left; 
+    		width: 50%; 
+    		border: 1px solid black;
+    		height: 84.5vh;
+    	}
+    	label
+    	{
+    		/*margin: 10px;*/
+    		color: #fff;
+    		text-align: center;
+
+    	}
+    	input
+    	{
+    		margin: 10px;
+    	}
+    	.form-content-right
+    	{
+    		height: 84.5vh;
+    		border: 1px solid black;
+    	}
+    	.right-section-content
+    	{
+    		display: flex;
+    		align-items: flex-start;
+    		justify-content: space-evenly;
+    	}
+    	.right-section-content-body
+    	{
+    		display: flex;
+    		align-items: center;
+    		justify-content: center;
+    	}
+    	table
+    	{
+    		border: 1px solid #fff;
+/*    		margin: 20px;*/
+    	}
+    	th
+    	{
+/*    		text-decoration: underline;*/
+    		text-align: center;
+    		font-size: 20px;
+    	}
+    	th,td
+    	{
+    		padding: 10px;
+    		color: #fff;
+    		text-align: center;
+    	}
+    	.thead
+    	{
+    		padding: 30px;
+    		padding-bottom: 10px;
+    		border-bottom: 1px solid #fff;
+    		font-family : "serif";
+/*    		text-align: center;*/
+    	}
+    	.email
+    	{
+    		width: 150px;
+    	}
+    	.form-detail
+    	{
+    		display: flex;
+    		align-items: center;
+    		justify-content: center;
+       }
+    	h3 ,h4
+    	{
+    		color: #fff;
+    	}
+    	p
+    	{
+    		color: #fff;
+    	}
+    	.box
+    	{
+    		display: inline;
+    	}
+    	.boxes
+    	{
+    		height: 50px;
+    		width: 50px;
+    		border: 1px solid black;
+    		border-radius: 10px;
+    	}
+    	.opbuttons
+    	{
+    		margin: 10px;
+    		padding:10px;
+    		background-color: #ED6B5B;
+    		color: #fff;
+    		border: none;
+    		border-radius: 5px;
+    		cursor: pointer;
+    		font-size: 18px;
+    	}
+    </style>
+</head>
+{{>navbar}}
+<body class="form">
+	<div class="content">
+		<!-- <div class="form-content-left">
+			<form class="form-detail"  action="/dynamicpdf" method ="POST" id="myform">
+				<div class="form-right">
+					<h3 style="text-align: center;">Enter values</h3>
+					<div class="form-row">
+						<label>Enter item no.</label><br>
+						<input type="text" name="itemno" class="input-box"><br>
+						<label>Enter item name</label><br>
+						<input type="text" name="itemname" class="input-box"><br>
+						<label>Enter price</label><br>
+						<input type="text" name="price" class="input-box"><br>
+
+					</div>
+					<div class="form-row-last" style="display: flex;align-items: center;justify-content: center;">
+						<input type="submit" class="register" value="Create" id="create">					
+						<span  id = "divs" style="display: none;">{{divs}}</span>
+					</div>
+				</div>
+			</form>
+			<div class="divs" id="box"></div>
+		</div> -->
+	</div>
+	<div class="content">
+		<div class="form-content-right" id="right-box" >
+			<h4 style="text-align: center;">Fetch data from database</h4><br>
+			|<button type="button" onclick="getData()" class="opbuttons">Fetch</button>
+			<div class="right-section-content-body" id="dt">
+				<table id='userData'>
+					<tr>
+						<th class="thead">Name</th>
+						<th class="thead email">Email</th>
+						<th class="thead">Zip Code</th>
+						<th class="thead">Place</th>
+						<th class="thead">Country</th>
+						<th class="thead">Phone No.</th>
+					</tr>	
+				
+						<script type="text/javascript">
+							var userData = document.getElementById("userData");
+							// function validateAndGetData(flag)
+							// {
+							// 	if (flag == 1)
+							// 	{
+							// 		getData();
+							// 	}
+							// }			
+
+						async function getData(e)
+						{
+							const baseUrl='http://localhost:3000/dynamicpdf/data';
+							const res = await fetch(baseUrl,{method : 'GET'})
+							const data =await res.json();	
+							//Get the list of data
+							for (var i = 0; i < data.usersData.length; i++)
+							{
+								// console.log(data.images[i]);
+								 var udata = "<tr><td class='data'>"+data.usersData[i].username+"</td><td class='data'>"+data.usersData[i].email+"</td><td class='data'>"+data.usersData[i].zip_code+"</td><td class='data'>"+data.usersData[i].place+"</td><td class='data'>"+data.usersData[i].country+"</td><td class='data'>"+data.usersData[i].phoneno+"</td></tr></table>";
+								userData.innerHTML = userData.innerHTML+udata;
+							}			
+							// validateAndGetData(0);	
+						}	
+						// validateAndGetData(0);
+					</script>
+					</table>
+					
+				</div>
+		</div>
+	</div>
+</body>
+</html>
